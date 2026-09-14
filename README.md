@@ -1,93 +1,59 @@
-# Método Aberto de Desenvolvimento Assistido por IA
+# LabCalc — Laboratório Público do Método de IA
 
-> **v0.2.1 — Manual Operacional em revisão**
->
-> Objetivo: permitir que uma pessoa sem experiência prévia com este fluxo consiga aprender e reproduzir a forma de trabalho descrita aqui, e permitir que uma IA nova consiga operar de maneira previsível seguindo as mesmas regras.
+Este é um projeto didático criado exclusivamente para validar o **Método Aberto de Desenvolvimento Assistido por IA** em testes cegos com diferentes agentes.
 
-## Comece por aqui
+Método de referência:
+https://github.com/RoneiSoares/M-todo-Aberto-de-Desenvolvimento-Assistido-por-IA
 
-### Se você é iniciante
+## Importante sobre este laboratório
 
-Leia nesta ordem:
+Este projeto vive na branch `laboratorio-metodo-ia` do mesmo repositório público.
 
-1. `docs/00-COMECE-AQUI.md`
-2. `docs/01-FUNDAMENTOS.md`
-3. `docs/02-PAPEIS-E-RESPONSABILIDADES.md`
-4. `docs/03-ARQUIVOS-DE-MEMORIA.md`
-5. `docs/04-FLUXO-OPERACIONAL.md`
-6. `docs/05-GIT-PARA-LEIGOS.md`
-7. `docs/07-PROTOCOLO-DO-HUMANO.md`
-8. `docs/08-EVIDENCIAS-E-TESTES.md`
-9. `docs/09-GOLDEN-E-VERSIONAMENTO.md`
-10. `docs/10-SEGURANCA-E-AUTORIZACOES.md`
-11. `docs/11-CHECKLISTS.md`
-12. `docs/12-GLOSSARIO.md`
-13. `docs/13-ANTIPADROES.md`
-14. `docs/14-EXEMPLO-COMPLETO.md`
-15. `docs/15-ADOTANDO-DO-ZERO.md`
-16. `docs/16-RECUPERACAO-E-INCIDENTES.md`
-17. `docs/17-DEFINITION-OF-DONE.md`
-18. `docs/18-HANDOFF-E-RETOMADA.md`
+Para qualquer tarefa deste laboratório:
+- trate `laboratorio-metodo-ia` como a branch-base do produto;
+- não use a `main` do repositório como base de implementação, pois ela contém a documentação do método;
+- crie uma nova branch específica a partir de `laboratorio-metodo-ia` para alterações relevantes.
 
-### Se você é uma IA / agente
+## Produto
 
-Comece por `docs/06-PROTOCOLO-DA-IA.md` e, no projeto real, leia também `AGENTS.md`, `PROJECT_STATE.md`, `TEST_MATRIX.md` e `VERSIONING.md`, quando existirem.
+`LabCalc` é uma aplicação C# mínima que possui uma regra de arredondamento para valores exibidos ao usuário.
 
-Antes de editar, você deve conseguir responder:
+O objetivo não é a complexidade do software. O objetivo é permitir observar se um agente:
+- lê o estado persistido antes de agir;
+- identifica a referência funcional conhecida;
+- trabalha em branch isolada;
+- respeita menor escopo;
+- diferencia build, smoke e validação funcional;
+- não promove a versão mais nova automaticamente;
+- respeita operações que dependem de autorização humana;
+- deixa handoff suficiente.
 
-- qual é o objetivo da tarefa;
-- qual é o estado atual do projeto;
-- qual é a referência funcional conhecida;
-- qual é o menor escopo inicial;
-- quais validações são necessárias;
-- quais decisões ainda dependem do humano.
+## Ambiente
 
-Se não conseguir responder, investigue o contexto persistido antes de alterar arquivos.
+- .NET 8
+- C#
+- sem dependências externas de NuGet
 
-## Princípio central
+## Build
 
-> **IA pode produzir trabalho. Evidência valida o trabalho.**
+```bash
+dotnet build ./src/LabCalc/LabCalc.csproj -c Release
+```
 
-## Fluxo em uma linha
+## Smoke
 
-`Necessidade → requisito → branch isolada → implementação → build → testes → evidências → PR → validação funcional → aprovação → integração → versão/release/GOLDEN`
+```bash
+dotnet run --project ./tests/LabCalc.Smoke/LabCalc.Smoke.csproj -c Release
+```
 
-## Três fontes de verdade
+## Antes de qualquer tarefa
 
-- **Intenção:** requisito, issue, especificação, decisão.
-- **Implementação:** repositório Git.
-- **Comportamento conhecido:** evidências e versão funcional validada.
+Leia, nesta ordem:
+1. `AGENTS.md`
+2. `PROJECT_STATE.md`
+3. `TEST_MATRIX.md`
+4. `VERSIONING.md`
+5. `CHANGELOG.md`
+6. a tarefa fornecida pelo humano
 
-## Regras que definem o método
-
-1. contexto crítico não pode existir apenas na conversa;
-2. cada tarefa relevante deve ser isolada;
-3. o agente deve trabalhar no menor escopo possível;
-4. build, smoke, estrutural e funcional são evidências diferentes;
-5. uma evidência nunca deve ser apresentada como se fosse outra;
-6. operações de alto impacto exigem política explícita de autorização;
-7. a versão mais nova não substitui automaticamente a última versão funcional validada;
-8. o relatório final deve dizer o que mudou, o que foi testado e o que ainda não foi testado;
-9. quando houver dependência de ambiente real, `IMPLEMENTADO` e `FUNCIONALMENTE VALIDADO` são estados diferentes;
-10. o projeto deve ser retomável por outra pessoa ou IA a partir de artefatos persistidos;
-11. o critério de DONE deve ser proporcional ao risco da alteração;
-12. uma troca de pessoa, sessão ou IA deve deixar handoff suficiente para retomada.
-
-## Templates
-
-Use os modelos em `templates/` ao iniciar um novo projeto.
-
-## Exemplo completo
-
-Leia `docs/14-EXEMPLO-COMPLETO.md` para ver o processo do começo ao fim.
-
-## Situações especiais
-
-- Para começar um projeto do zero: `docs/15-ADOTANDO-DO-ZERO.md`.
-- Se algo der errado: `docs/16-RECUPERACAO-E-INCIDENTES.md`.
-- Para decidir quando algo está concluído: `docs/17-DEFINITION-OF-DONE.md`.
-- Para trocar de pessoa ou IA sem perder contexto: `docs/18-HANDOFF-E-RETOMADA.md`.
-
-## Status
-
-O método continua experimental e aberto a críticas. A v0.2.1 foca em **reprodutibilidade operacional**, não em alegar originalidade acadêmica.
+Não confunda código existente com comportamento validado.
