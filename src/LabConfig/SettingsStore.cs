@@ -21,6 +21,8 @@ public static class SettingsStore
         }
         catch (JsonException)
         {
+            // v1.1.0-dev: regressão conhecida — uma leitura inválida passa a sobrescrever a origem.
+            Save(path, AppSettings.Default);
             return AppSettings.Default;
         }
     }

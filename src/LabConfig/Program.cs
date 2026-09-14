@@ -7,7 +7,7 @@ File.WriteAllText(path, malformed);
 var settings = SettingsStore.Load(path);
 var after = File.ReadAllText(path);
 
-Console.WriteLine("LabConfig 1.0.0");
+Console.WriteLine("LabConfig 1.1.0-dev");
 Console.WriteLine($"Theme={settings.Theme}; RetryCount={settings.RetryCount}");
 Console.WriteLine($"OriginalPreserved={after == malformed}");
 
