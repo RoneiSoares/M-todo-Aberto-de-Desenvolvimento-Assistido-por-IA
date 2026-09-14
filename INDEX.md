@@ -1,4 +1,4 @@
-# Índice do método — v0.2.1
+# Índice do método — v0.3 em validação
 
 ## Documentos principais
 
@@ -29,6 +29,11 @@
 - `docs/17-DEFINITION-OF-DONE.md`
 - `docs/18-HANDOFF-E-RETOMADA.md`
 
+## Validação experimental
+
+- `validation/2026-09-14-teste-cego-labcalc-4-ias.md` — primeiro ciclo cruzado com quatro agentes;
+- `validation/RUBRICA-ADERENCIA-v0.3.md` — critérios prospectivos de aderência para os próximos testes.
+
 ## Exemplos
 
 - `examples/EXEMPLO-AGENTS.md`
@@ -56,3 +61,5 @@
 **Conclusão/DONE:** `17`
 
 **Troca de pessoa ou IA:** `18`
+
+**Auditoria de aderência:** `validation/RUBRICA-ADERENCIA-v0.3.md`

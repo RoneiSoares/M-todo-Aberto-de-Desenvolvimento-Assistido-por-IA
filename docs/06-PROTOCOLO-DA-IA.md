@@ -19,7 +19,9 @@ Quando as ferramentas permitirem, confirme:
 5. documentação operacional do projeto;
 6. estado persistido;
 7. referência funcional conhecida;
-8. escopo e autorizações da tarefa.
+8. escopo e autorizações da tarefa;
+9. proveniência do ambiente de trabalho: checkout oficial, worktree, fork, clone, snapshot, sandbox ou reconstrução;
+10. capacidades reais da sessão que afetam a evidência: leitura, escrita, Git, rede, build, testes e acesso ao ambiente funcional.
 
 Procure, nesta ordem prática:
 
@@ -33,6 +35,16 @@ Procure, nesta ordem prática:
 
 Se algum desses arquivos não existir, não invente seu conteúdo. Trabalhe com o que existe e sinalize a lacuna.
 
+Quando identificação do agente for relevante para auditoria, comparação ou handoff, registre:
+
+- IA/modelo, se o ambiente informar;
+- provedor;
+- tipo de ambiente;
+- capacidades relevantes disponíveis;
+- limitações que impedem produzir alguma evidência.
+
+Se o modelo exato não for informado pelo ambiente, diga isso explicitamente em vez de adivinhar.
+
 ## 1. Leia antes de agir
 
 Antes de alterar qualquer arquivo:
@@ -41,6 +53,7 @@ Antes de alterar qualquer arquivo:
 - confirme status;
 - confirme branch;
 - confirme remote;
+- confirme se o diretório pertence realmente ao projeto autoritativo ou é apenas uma cópia/reconstrução;
 - leia `AGENTS.md`, quando existir;
 - leia `PROJECT_STATE.md`, quando existir;
 - leia apenas a documentação relevante ao escopo.
@@ -55,6 +68,8 @@ Não trate uma única fonte como verdade absoluta.
 - Git responde **o que está implementado**;
 - evidência funcional responde **o que sabemos que realmente funciona**.
 
+A identidade da fonte também importa. Um Git inicializado em uma reconstrução local prova o estado daquela reconstrução, não do repositório oficial.
+
 Se conversa e estado persistido divergirem:
 
 1. não escolha silenciosamente;
@@ -62,7 +77,8 @@ Se conversa e estado persistido divergirem:
 3. identifique que tipo de verdade cada fonte representa;
 4. não use implementação para invalidar um requisito sem discussão;
 5. não use requisito como prova de implementação;
-6. não use implementação como prova de funcionamento.
+6. não use implementação como prova de funcionamento;
+7. não transfira evidência entre cópias, branches, commits ou ambientes sem demonstrar que representam o mesmo estado.
 
 ## 3. Menor escopo possível
 
@@ -91,6 +107,8 @@ Não altere `main` diretamente salvo autorização explícita do projeto.
 
 Quando houver múltiplas tarefas simultâneas ou risco de conflito, use worktree se o ambiente suportar.
 
+Se a única opção disponível for uma cópia, sandbox ou reconstrução não autoritativa, você pode usá-la para análise, protótipo ou experimento, mas deve declarar essa condição e não apresentar a mudança como se estivesse persistida no projeto oficial.
+
 ## 6. Diferencie evidências
 
 Você só pode afirmar aquilo que a evidência realmente prova.
@@ -104,6 +122,18 @@ Exemplos:
 - execução real não ocorreu → `FUNCIONAL PENDENTE`.
 
 Nunca converta automaticamente uma camada em outra.
+
+Além da camada, registre a proveniência quando ela for relevante:
+
+```text
+BUILD OK — commit abc123 — branch fix/x — checkout oficial
+```
+
+ou:
+
+```text
+DIFF REVISADO — sandbox reconstruída — não prova implementação no projeto oficial
+```
 
 ## 7. Não promova versão automaticamente
 
@@ -133,6 +163,8 @@ No fluxo de referência deste método, não execute sem autorização explícita
 
 Se o projeto possuir política diferente, ela deve estar registrada explicitamente.
 
+Commit, push normal e abertura de PR não pertencem automaticamente à lista crítica acima. Eles podem ser executados quando estiverem dentro do escopo autorizado e a política do projeto permitir.
+
 ## 9. Execute o que estiver autorizado
 
 Se uma operação está dentro do escopo autorizado e a ferramenta permite executá-la, execute-a.
@@ -151,6 +183,12 @@ Se a ferramenta não conseguir executar uma etapa:
 - forneça apenas as etapas/comandos ainda pendentes.
 
 Não transforme limitação da ferramenta em trabalho manual desnecessário.
+
+Uma implementação apenas descrita na resposta deve permanecer `CORREÇÃO PROPOSTA` ou `IMPLEMENTAÇÃO PENDENTE`.
+
+Uma implementação executada apenas em cópia não autoritativa deve ser qualificada, por exemplo:
+
+`IMPLEMENTADO EM CÓPIA NÃO AUTORITATIVA — PROJETO OFICIAL PENDENTE`.
 
 ## 11. Estado inesperado
 
@@ -175,6 +213,8 @@ Não use apenas “pronto” ou “concluído”.
 Use o estado mais forte que as evidências permitem:
 
 - `ANALISADO`;
+- `CORREÇÃO PROPOSTA`;
+- `IMPLEMENTADO EM CÓPIA NÃO AUTORITATIVA`, quando aplicável;
 - `IMPLEMENTADO`;
 - `BUILD OK`;
 - `TESTES LÓGICOS/SMOKE OK`;
@@ -191,6 +231,10 @@ Exemplo:
 
 > `IMPLEMENTADO — BUILD OK — SMOKE OK — FUNCIONAL PENDENTE`
 
+Se a alteração só existir numa sandbox reconstruída:
+
+> `IMPLEMENTADO EM CÓPIA NÃO AUTORITATIVA — PROJETO OFICIAL PENDENTE — BUILD PENDENTE`
+
 ## 13. Handoff / troca de IA
 
 Se a tarefa terminar sem conclusão total, deixe um estado retomável.
@@ -200,6 +244,7 @@ Registre no relatório ou em `PROJECT_STATE.md`, conforme o projeto:
 ```text
 Objetivo:
 Branch:
+Proveniência do ambiente:
 Arquivos relevantes:
 O que foi feito:
 Evidências obtidas:
@@ -214,6 +259,8 @@ Outra IA deve conseguir continuar sem reconstruir toda a conversa anterior.
 
 Informe, de forma objetiva:
 
+- IA/modelo e ambiente, quando relevantes para auditoria ou limitações;
+- proveniência do workspace usado;
 - arquivos alterados;
 - resumo da mudança;
 - branch;
@@ -235,7 +282,8 @@ Evite:
 - “100% funcionando” sem validação compatível;
 - “sem regressões” sem testes que sustentem isso;
 - “validado” quando houve apenas build;
-- “estável” apenas porque foi publicada uma release.
+- “estável” apenas porque foi publicada uma release;
+- “implementado no projeto” quando a alteração existe apenas em resposta, patch, sandbox ou reconstrução sem vínculo demonstrado com o repositório autoritativo.
 
 ## 16. Teste de aderência do agente
 
@@ -245,9 +293,11 @@ Antes de começar uma alteração, a IA deveria conseguir responder:
 2. Qual é a branch correta?
 3. Qual é o estado atual do projeto?
 4. Qual é a referência funcional conhecida?
-5. Quais arquivos provavelmente pertencem ao menor escopo?
-6. Quais validações são necessárias?
-7. Quais operações exigem autorização humana?
-8. O que poderá ser afirmado ao final com base nas evidências?
+5. O workspace atual é autoritativo ou uma cópia/reconstrução?
+6. Quais arquivos provavelmente pertencem ao menor escopo?
+7. Quais validações são necessárias?
+8. Quais operações exigem autorização humana?
+9. Quais capacidades reais do ambiente permitem produzir evidência?
+10. O que poderá ser afirmado ao final com base nas evidências?
 
 Se essas respostas ainda não puderem ser obtidas, investigue o contexto persistido antes de editar.

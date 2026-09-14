@@ -15,11 +15,25 @@
 
 ## v0.3 — Validação cruzada
 - [ ] aplicar em projetos de naturezas diferentes
-- [ ] registrar falhas e contraexemplos
+- [ ] registrar falhas e contraexemplos de múltiplos ciclos
+  - [x] primeiro ciclo: LabCalc com quatro agentes
 - [ ] separar regras gerais de regras contextuais
-- [ ] testar onboarding com uma IA sem histórico prévio
+- [x] testar onboarding com uma IA sem histórico prévio
 - [ ] testar adoção por uma pessoa leiga sem orientação adicional
-- [ ] definir critérios objetivos de aderência ao método
+- [x] definir critérios objetivos de aderência ao método
+- [ ] repetir o teste após incorporar as correções descobertas
+
+### Achados do primeiro ciclo
+
+- classificação de risco precisava de regra de precedência;
+- `IMPLEMENTADO` precisava carregar proveniência quando a alteração ocorre fora do projeto autoritativo;
+- identificação e capacidades do agente ajudam a auditar limitações reais da ferramenta;
+- operações críticas precisam permanecer claramente separadas de commit/push/PR comuns quando estes estiverem autorizados;
+- quatro agentes independentes reconstruíram de forma convergente o estado, a GOLDEN, a branch-base, o diagnóstico técnico e as validações essenciais do LabCalc.
+
+Evidência: `validation/2026-09-14-teste-cego-labcalc-4-ias.md`.
+
+Rubrica prospectiva: `validation/RUBRICA-ADERENCIA-v0.3.md`.
 
 ## v0.4 — Automação
 - [ ] CI mínimo
