@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.1] - 2026-09-14
+
+### Adicionado
+- protocolo da IA ampliado para entrada, retomada, estado inesperado e handoff;
+- guia de adoção do método do zero;
+- guia de recuperação e incidentes;
+- Definition of Done proporcional ao risco;
+- protocolo de handoff e retomada entre pessoas ou IAs;
+- rota de leitura específica para iniciantes e para agentes no README.
+
+### Corrigido
+- referência interna do guia de incidentes para o capítulo de handoff;
+- distinção mais explícita entre implementação, evidência e validação funcional.
+
 ## [0.2.0] - 2026-09-14
 
 ### Adicionado
