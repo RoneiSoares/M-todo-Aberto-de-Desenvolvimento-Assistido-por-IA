@@ -7,6 +7,7 @@ public static class Calculator
         if (decimals < 0 || decimals > 28)
             throw new ArgumentOutOfRangeException(nameof(decimals));
 
-        return Math.Round(value, decimals, MidpointRounding.AwayFromZero);
+        // v1.1.0 em desenvolvimento: regressão conhecida em valores de empate.
+        return Math.Round(value, decimals, MidpointRounding.ToEven);
     }
 }
