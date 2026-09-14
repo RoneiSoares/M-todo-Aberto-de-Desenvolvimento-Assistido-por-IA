@@ -1,5 +1,19 @@
 # Changelog
 
+## [Unreleased] — v0.3 em validação
+
+### Validação cruzada
+- executado primeiro teste cego do LabCalc com quatro agentes de IA independentes;
+- registrado relatório do experimento em `validation/2026-09-14-teste-cego-labcalc-4-ias.md`;
+- adicionada rubrica objetiva de aderência de 100 pontos para os próximos ciclos.
+
+### Ajustado a partir de evidência do teste
+- classificação de risco agora usa o maior nível aplicável quando múltiplos critérios coexistem, salvo justificativa explícita;
+- `IMPLEMENTADO` passa a exigir proveniência clara quando a alteração ocorre em sandbox, snapshot, fork, cópia ou reconstrução;
+- adicionados estados `CORREÇÃO PROPOSTA` e `IMPLEMENTADO EM CÓPIA NÃO AUTORITATIVA`;
+- protocolo da IA passa a registrar proveniência do workspace e capacidades reais da sessão quando afetarem a evidência;
+- esclarecida a distinção entre operações críticas e commit/push/abertura de PR quando permitidos pela política do projeto.
+
 ## [0.2.1] - 2026-09-14
 
 ### Adicionado
