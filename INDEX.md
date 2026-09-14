@@ -1,11 +1,14 @@
-# Índice do pacote v0.2
+# Índice do método — v0.2.1
 
-Arquivos incluídos:
+## Documentos principais
 
+- `README.md`
 - `CHANGELOG.md`
 - `CONTRIBUTING.md`
-- `README.md`
 - `ROADMAP.md`
+
+## Manual
+
 - `docs/00-COMECE-AQUI.md`
 - `docs/01-FUNDAMENTOS.md`
 - `docs/02-PAPEIS-E-RESPONSABILIDADES.md`
@@ -21,10 +24,35 @@ Arquivos incluídos:
 - `docs/12-GLOSSARIO.md`
 - `docs/13-ANTIPADROES.md`
 - `docs/14-EXEMPLO-COMPLETO.md`
+- `docs/15-ADOTANDO-DO-ZERO.md`
+- `docs/16-RECUPERACAO-E-INCIDENTES.md`
+- `docs/17-DEFINITION-OF-DONE.md`
+- `docs/18-HANDOFF-E-RETOMADA.md`
+
+## Exemplos
+
 - `examples/EXEMPLO-AGENTS.md`
+
+## Templates
+
 - `templates/AGENTS.md`
-- `templates/FINAL_REPORT.md`
 - `templates/PROJECT_STATE.md`
-- `templates/TASK_PROMPT.md`
 - `templates/TEST_MATRIX.md`
 - `templates/VERSIONING.md`
+- `templates/TASK_PROMPT.md`
+- `templates/FINAL_REPORT.md`
+- `templates/HANDOFF.md`
+- `templates/RISK_ASSESSMENT.md`
+- `templates/DECISION_RECORD.md`
+
+## Rotas rápidas
+
+**Pessoa leiga:** `00 → 01 → 02 → 05 → 04 → 14 → 15`
+
+**IA/agente:** `06 → AGENTS do projeto → PROJECT_STATE → TEST_MATRIX → VERSIONING → tarefa atual`
+
+**Incidente:** `16`
+
+**Conclusão/DONE:** `17`
+
+**Troca de pessoa ou IA:** `18`
