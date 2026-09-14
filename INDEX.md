@@ -36,11 +36,14 @@
 ## Templates
 
 - `templates/AGENTS.md`
-- `templates/FINAL_REPORT.md`
 - `templates/PROJECT_STATE.md`
-- `templates/TASK_PROMPT.md`
 - `templates/TEST_MATRIX.md`
 - `templates/VERSIONING.md`
+- `templates/TASK_PROMPT.md`
+- `templates/FINAL_REPORT.md`
+- `templates/HANDOFF.md`
+- `templates/RISK_ASSESSMENT.md`
+- `templates/DECISION_RECORD.md`
 
 ## Rotas rápidas
 
