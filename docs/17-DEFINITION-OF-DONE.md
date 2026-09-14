@@ -74,6 +74,20 @@ Evidência esperada:
 - aceitação humana quando o resultado depende de julgamento;
 - documentação de estado atualizada.
 
+## 2.1 Regra de precedência entre níveis
+
+Uma mesma tarefa pode atender simultaneamente a critérios de níveis diferentes.
+
+Exemplo: uma mudança pode ser uma `regra isolada` — normalmente risco médio — e ao mesmo tempo alterar um `comportamento previamente validado` — critério de risco alto.
+
+Nesses casos, por padrão:
+
+> **prevalece o maior nível de risco aplicável.**
+
+Só reduza o nível quando existir justificativa explícita e registrada no projeto para tratar aquele caso de forma diferente.
+
+A classificação deve considerar o impacto real da mudança, e não apenas o tamanho do diff.
+
 ## 3. Critérios gerais de DONE
 
 Uma tarefa pode ser considerada concluída quando, conforme seu risco:
@@ -81,13 +95,35 @@ Uma tarefa pode ser considerada concluída quando, conforme seu risco:
 ```text
 objetivo atendido
 + escopo respeitado
-+ alteração persistida
++ alteração persistida no local correto
 + validações obrigatórias executadas
 + evidências registradas
 + pendências explicitadas
 + documentação de estado atualizada quando necessário
 = DONE compatível com o risco
 ```
+
+## 3.1 Onde a implementação foi persistida importa
+
+`IMPLEMENTADO` deve indicar onde a mudança realmente existe.
+
+Uma alteração feita apenas em:
+
+- patch mostrado na conversa;
+- arquivo de texto que representa o repositório;
+- sandbox reconstruída;
+- cópia local sem vínculo verificado com o repositório autoritativo;
+- protótipo isolado;
+
+não deve ser apresentada como se já estivesse implementada no projeto oficial.
+
+Use linguagem explícita, por exemplo:
+
+- `CORREÇÃO PROPOSTA — IMPLEMENTAÇÃO PENDENTE`;
+- `IMPLEMENTADO EM CÓPIA NÃO AUTORITATIVA`;
+- `PROTÓTIPO LOCAL IMPLEMENTADO — PROJETO OFICIAL PENDENTE`.
+
+O estado do projeto autoritativo só muda quando a alteração está persistida no repositório/worktree/branch que realmente pertence ao projeto e essa proveniência pode ser demonstrada.
 
 ## 4. O que impede DONE
 
@@ -98,7 +134,8 @@ Não declarar `DONE` quando:
 - o resultado depende de ambiente real ainda não testado;
 - a versão executada no teste não está identificada;
 - a alteração contém trabalho alheio ao escopo sem revisão;
-- existe operação crítica pendente e ela é necessária para o objetivo declarado.
+- existe operação crítica pendente e ela é necessária para o objetivo declarado;
+- a única implementação existente está em uma cópia não autoritativa e o objetivo exige alterar o projeto oficial.
 
 ## 5. DONE da tarefa não é igual a release
 
@@ -124,3 +161,5 @@ GOLDEN: SEM ALTERAÇÃO
 ## 6. Regra final
 
 > A força da palavra usada para descrever o estado nunca deve superar a força da evidência disponível.
+
+Essa regra vale também para a **proveniência** da evidência: uma evidência produzida em cópia, sandbox, fork, snapshot ou reconstrução deve ser associada explicitamente a esse ambiente e não transferida silenciosamente para o projeto autoritativo.
