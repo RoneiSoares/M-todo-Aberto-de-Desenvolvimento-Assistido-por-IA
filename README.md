@@ -1,6 +1,6 @@
 # Método Aberto de Desenvolvimento Assistido por IA
 
-> **v0.2 — Manual Operacional**
+> **v0.2.1 — Manual Operacional em revisão**
 >
 > Objetivo: permitir que uma pessoa sem experiência prévia com este fluxo consiga aprender e reproduzir a forma de trabalho descrita aqui, e permitir que uma IA nova consiga operar de maneira previsível seguindo as mesmas regras.
 
@@ -61,4 +61,4 @@ Leia `docs/14-EXEMPLO-COMPLETO.md` para ver o processo do começo ao fim.
 
 ## Status
 
-O método continua experimental e aberto a críticas. A v0.2 foca em **reprodutibilidade operacional**, não em alegar originalidade acadêmica.
+O método continua experimental e aberto a críticas. A v0.2.1 foca em **reprodutibilidade operacional**, não em alegar originalidade acadêmica.
