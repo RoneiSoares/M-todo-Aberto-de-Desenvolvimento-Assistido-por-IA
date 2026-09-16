@@ -28,6 +28,7 @@
 - `docs/16-RECUPERACAO-E-INCIDENTES.md`
 - `docs/17-DEFINITION-OF-DONE.md`
 - `docs/18-HANDOFF-E-RETOMADA.md`
+- `docs/19-PROTOCOLO-DE-ENTREGA-AO-EXECUTOR.md`
 
 ## Validação experimental
 
@@ -45,6 +46,7 @@
 - `templates/TEST_MATRIX.md`
 - `templates/VERSIONING.md`
 - `templates/TASK_PROMPT.md`
+- `templates/EXECUTOR_PROMPT.md`
 - `templates/FINAL_REPORT.md`
 - `templates/HANDOFF.md`
 - `templates/RISK_ASSESSMENT.md`
@@ -54,7 +56,9 @@
 
 **Pessoa leiga:** `00 → 01 → 02 → 05 → 04 → 14 → 15`
 
-**IA/agente:** `06 → AGENTS do projeto → PROJECT_STATE → TEST_MATRIX → VERSIONING → tarefa atual`
+**IA executora:** `06 → AGENTS do projeto → PROJECT_STATE → TEST_MATRIX → VERSIONING → tarefa atual`
+
+**IA orquestradora preparando tarefa para Codex/Executor:** `06 → 19 → EXECUTOR_PROMPT → contexto persistido do projeto`
 
 **Incidente:** `16`
 

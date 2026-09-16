@@ -2,6 +2,14 @@
 
 ## [Unreleased] — v0.3 em validação
 
+### Entrega entre agentes
+- formalizados os papéis de orquestrador, executor e auditor independente;
+- adicionado `docs/19-PROTOCOLO-DE-ENTREGA-AO-EXECUTOR.md`;
+- adicionado `templates/EXECUTOR_PROMPT.md` para prompts compactos e prontos para copiar;
+- definido que o orquestrador deve enviar ao executor apenas o delta necessário para a tarefa atual, evitando duplicar contexto persistido no projeto;
+- protocolo da IA e README agora roteiam explicitamente pedidos como “me dê o prompt para o Codex” para o protocolo de entrega;
+- definido formato compacto de retorno do executor para reduzir ruído e consumo de contexto.
+
 ### Validação cruzada
 - executado primeiro teste cego do LabCalc com quatro agentes de IA independentes;
 - registrado relatório do experimento em `validation/2026-09-14-teste-cego-labcalc-4-ias.md`;
