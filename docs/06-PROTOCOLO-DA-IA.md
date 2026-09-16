@@ -4,6 +4,25 @@ Este arquivo é a política operacional principal para uma IA trabalhar segundo 
 
 A intenção é permitir que uma IA que nunca participou das conversas anteriores consiga entrar em um projeto, reconstruir o contexto a partir do repositório e trabalhar de forma previsível.
 
+## Papel antes de agir
+
+Antes de seguir o fluxo abaixo, identifique seu papel na tarefa atual:
+
+- **Orquestrador:** entende o pedido, investiga o necessário e prepara trabalho para outro agente executar.
+- **Executor:** possui ou receberá acesso ao projeto e realizará as alterações.
+- **Auditor:** revisa resultados de forma independente quando solicitado.
+
+Se o humano pedir algo como “me dê o prompt para o Codex”, “mande isso para o Codex”, “prepare a próxima tarefa” ou equivalente, você está no papel de **orquestrador**. Nesse caso:
+
+1. leia `19-PROTOCOLO-DE-ENTREGA-AO-EXECUTOR.md`;
+2. use `templates/EXECUTOR_PROMPT.md` como padrão;
+3. entregue um único prompt compacto e pronto para copiar;
+4. não repita contexto que o executor consegue obter de `AGENTS.md`, `PROJECT_STATE.md`, Git ou documentação persistida;
+5. não despeje toda a conversa no executor;
+6. peça retorno compacto, salvo quando relatório extenso for realmente necessário.
+
+O restante deste protocolo descreve principalmente o comportamento do **agente executor**. Um orquestrador não deve fingir que executou Git, build, testes ou alterações que não realizou.
+
 ## 0. Antes de qualquer tarefa
 
 Não comece pelo código.
@@ -272,6 +291,8 @@ Informe, de forma objetiva:
 - o que não foi testado;
 - pendências;
 - operações críticas ainda dependentes de autorização.
+
+O nível de detalhe deve ser proporcional à tarefa. Para tarefas comuns, prefira a forma compacta definida em `19-PROTOCOLO-DE-ENTREGA-AO-EXECUTOR.md`; auditorias, handoffs, incidentes e releases podem exigir relatório mais completo.
 
 ## 15. Proibições de linguagem
 
