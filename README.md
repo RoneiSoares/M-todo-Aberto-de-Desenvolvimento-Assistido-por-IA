@@ -29,6 +29,7 @@ Leia nesta ordem:
 17. `docs/17-DEFINITION-OF-DONE.md`
 18. `docs/18-HANDOFF-E-RETOMADA.md`
 19. `docs/19-PROTOCOLO-DE-ENTREGA-AO-EXECUTOR.md`
+20. `docs/20-POLITICA-DE-CI-E-ARTEFATOS.md`
 
 ### Se você é uma IA / agente
 
@@ -36,6 +37,7 @@ Comece por `docs/06-PROTOCOLO-DA-IA.md` e identifique primeiro seu papel atual.
 
 - Se você vai **executar** alterações, no projeto real leia também `AGENTS.md`, `PROJECT_STATE.md`, `TEST_MATRIX.md` e `VERSIONING.md`, quando existirem.
 - Se você vai **preparar uma tarefa para Codex/Claude Code/outro executor**, leia também `docs/19-PROTOCOLO-DE-ENTREGA-AO-EXECUTOR.md` e use `templates/EXECUTOR_PROMPT.md`.
+- Se a tarefa cria ou altera **CI/workflows/artifacts**, leia também `docs/20-POLITICA-DE-CI-E-ARTEFATOS.md`.
 - Se você vai **auditar**, procure problemas concretos e não reimplemente por preferência.
 
 Quando o humano pedir um prompt para o Codex ou equivalente, não apenas descreva o que ele deve fazer: entregue **um único prompt compacto, autocontido e pronto para copiar**, sem repetir contexto que já está persistido no projeto.
@@ -76,10 +78,11 @@ Se não conseguir responder, investigue o contexto persistido antes de alterar a
 7. a versão mais nova não substitui automaticamente a última versão funcional validada;
 8. o relatório final deve dizer o que mudou, o que foi testado e o que ainda não foi testado;
 9. quando houver dependência de ambiente real, `IMPLEMENTADO` e `FUNCIONALMENTE VALIDADO` são estados diferentes;
-10. o projeto deve ser retomável por outra pessoa ou IA a partir de artefatos persistidos;
+10. o projeto deve ser retomável por outra pessoa ou IA a partir de registros persistidos;
 11. o critério de DONE deve ser proporcional ao risco da alteração;
 12. uma troca de pessoa, sessão ou IA deve deixar handoff suficiente para retomada;
-13. quando um orquestrador delegar trabalho a outro agente, deve enviar somente o delta necessário em um único prompt copiável, sem duplicar o contexto persistido do projeto.
+13. quando um orquestrador delegar trabalho a outro agente, deve enviar somente o delta necessário em um único prompt copiável, sem duplicar o contexto persistido do projeto;
+14. CI deve produzir evidência por padrão; binários persistentes só devem existir quando houver consumidor e retenção justificados, e versões permanentes devem ir para release.
 
 ## Templates
 
@@ -98,6 +101,7 @@ Leia `docs/14-EXEMPLO-COMPLETO.md` para ver o processo do começo ao fim.
 - Para decidir quando algo está concluído: `docs/17-DEFINITION-OF-DONE.md`.
 - Para trocar de pessoa ou IA sem perder contexto: `docs/18-HANDOFF-E-RETOMADA.md`.
 - Para preparar um prompt econômico e pronto para Codex/Executor: `docs/19-PROTOCOLO-DE-ENTREGA-AO-EXECUTOR.md`.
+- Para criar/revisar workflows, retenção e armazenamento de artifacts: `docs/20-POLITICA-DE-CI-E-ARTEFATOS.md`.
 
 ## Status
 
