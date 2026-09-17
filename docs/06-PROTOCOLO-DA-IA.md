@@ -79,6 +79,8 @@ Antes de alterar qualquer arquivo:
 
 Não faça varredura completa do repositório por padrão.
 
+Se a tarefa criar ou alterar CI, workflows, caches ou artifacts, leia também `20-POLITICA-DE-CI-E-ARTEFATOS.md` antes de editar.
+
 ## 2. Diferencie as fontes de verdade
 
 Não trate uma única fonte como verdade absoluta.
@@ -153,6 +155,23 @@ ou:
 ```text
 DIFF REVISADO — sandbox reconstruída — não prova implementação no projeto oficial
 ```
+
+## 6.1 CI e persistência de artifacts
+
+CI frequente é aceitável quando produz evidência útil. Persistência frequente de binários não é o padrão.
+
+Ao criar ou alterar workflow:
+
+- prefira `build + testes + PASS/FAIL` sem artifact persistente em push/PR comum;
+- use artifact temporário apenas quando existir consumidor concreto, como teste funcional/RC;
+- defina retenção curta para artifacts temporários, normalmente 1–3 dias;
+- evite gatilhos redundantes para o mesmo estado;
+- use `concurrency` e `cancel-in-progress` quando execuções antigas perderem utilidade;
+- preserve binários permanentes como Release Assets de uma release aprovada, não como artifacts indefinidos de CI.
+
+Antes de adicionar `upload-artifact` ou equivalente, justifique consumidor, tamanho, retenção e caráter temporário/permanente.
+
+Consulte `20-POLITICA-DE-CI-E-ARTEFATOS.md`.
 
 ## 7. Não promova versão automaticamente
 
@@ -287,7 +306,7 @@ Informe, de forma objetiva:
 - build e resultado;
 - testes executados e resultado;
 - validação funcional e resultado;
-- artefatos gerados;
+- artifacts de build persistidos, quando aplicável, com motivo e retenção;
 - o que não foi testado;
 - pendências;
 - operações críticas ainda dependentes de autorização.

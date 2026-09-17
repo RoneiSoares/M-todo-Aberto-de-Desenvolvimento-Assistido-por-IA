@@ -29,6 +29,7 @@
 - `docs/17-DEFINITION-OF-DONE.md`
 - `docs/18-HANDOFF-E-RETOMADA.md`
 - `docs/19-PROTOCOLO-DE-ENTREGA-AO-EXECUTOR.md`
+- `docs/20-POLITICA-DE-CI-E-ARTEFATOS.md`
 
 ## Validação experimental
 
@@ -59,6 +60,8 @@
 **IA executora:** `06 → AGENTS do projeto → PROJECT_STATE → TEST_MATRIX → VERSIONING → tarefa atual`
 
 **IA orquestradora preparando tarefa para Codex/Executor:** `06 → 19 → EXECUTOR_PROMPT → contexto persistido do projeto`
+
+**CI / workflows / artifacts:** `06 → 20 → AGENTS do projeto`
 
 **Incidente:** `16`
 

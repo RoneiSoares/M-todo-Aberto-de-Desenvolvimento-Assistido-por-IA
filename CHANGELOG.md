@@ -10,6 +10,15 @@
 - protocolo da IA e README agora roteiam explicitamente pedidos como “me dê o prompt para o Codex” para o protocolo de entrega;
 - definido formato compacto de retorno do executor para reduzir ruído e consumo de contexto.
 
+### CI, artifacts e custo operacional
+- adicionado `docs/20-POLITICA-DE-CI-E-ARTEFATOS.md` a partir de incidente real de armazenamento excessivo em GitHub Actions;
+- definido o princípio `CI produz evidência; release preserva binários`;
+- push/PR comum passa a ter como padrão build/testes sem persistência de binários;
+- artifacts temporários exigem consumidor concreto e retenção curta, normalmente 1–3 dias;
+- binários permanentes devem ser preservados como Release Assets de versão aprovada;
+- adicionadas regras para revisar gatilhos redundantes, `concurrency`, `cancel-in-progress`, tamanho, retenção e cota/custo;
+- glossário, checklists, antipadrões, protocolo da IA e template `AGENTS.md` foram alinhados à nova política.
+
 ### Validação cruzada
 - executado primeiro teste cego do LabCalc com quatro agentes de IA independentes;
 - registrado relatório do experimento em `validation/2026-09-14-teste-cego-labcalc-4-ias.md`;
