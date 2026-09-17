@@ -2,9 +2,13 @@
 
 **Agente executor** — IA/ferramenta capaz de operar no repositório e ambiente.
 
+**Artifact de CI / Actions Artifact** — arquivo persistido temporariamente por uma execução de CI para consumo posterior, como um instalador necessário para teste funcional. Não deve ser confundido com evidência em geral nem usado como armazenamento permanente por padrão.
+
 **Branch** — linha isolada de desenvolvimento.
 
 **Build** — processo de compilação/empacotamento.
+
+**CI / Integração contínua** — automação que executa build, testes e outras verificações a partir de eventos do repositório para produzir evidência sobre uma mudança.
 
 **Commit** — registro versionado de alterações.
 
@@ -23,6 +27,8 @@
 **Rebase** — reposicionamento de commits sobre outra base.
 
 **Release** — publicação de uma versão.
+
+**Release Asset** — arquivo binário associado a uma release aprovada e apropriado para preservação/distribuição permanente daquela versão.
 
 **Remote** — repositório remoto.
 
