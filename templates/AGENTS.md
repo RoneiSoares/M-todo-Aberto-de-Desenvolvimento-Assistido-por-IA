@@ -45,6 +45,14 @@ Leia este arquivo antes de qualquer tarefa.
 <comandos>
 ```
 
+## CI e armazenamento
+- push/PR normal: priorizar build + testes + PASS/FAIL, sem persistir binários por padrão;
+- artifact temporário: somente quando necessário para validação/RC, com consumidor e retenção definidos;
+- retenção padrão recomendada para artifact temporário: 1–3 dias, salvo justificativa do projeto;
+- binário permanente: publicar como Release Asset de uma release aprovada;
+- evitar gatilhos redundantes e usar `concurrency`/`cancel-in-progress` quando apropriado;
+- ao alterar workflow, revisar frequência, tamanho, retenção e custo/cota provável.
+
 ## Forma de trabalhar
 1. confirmar pasta/status/branch/remote;
 2. ler este arquivo e estado;
@@ -60,6 +68,6 @@ Leia este arquivo antes de qualquer tarefa.
 - resumo;
 - build;
 - testes;
-- artefatos;
+- artifacts persistidos, se houver, com motivo e retenção;
 - teste funcional;
 - pendências.
