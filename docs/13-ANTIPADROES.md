@@ -38,3 +38,9 @@ Mandar o humano executar comandos que o agente poderia executar.
 
 ## Relatório sem pendências
 Dizer apenas o que passou e esconder o que não foi testado.
+
+## CI como depósito de builds
+Fazer upload do executável/instalador em todo push ou PR sem consumidor concreto, retenção curta ou política de limpeza. CI deve produzir evidência; versões permanentes pertencem à release.
+
+## Gatilhos duplicados sem necessidade
+Rodar a mesma validação em `push` e `pull_request` para o mesmo estado, acumulando execução/custo sem evidência adicional útil.
